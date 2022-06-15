@@ -1,17 +1,17 @@
 import React from 'react';
 
-const ProductCard = () => {
+const ProductCard = (props) => {
     return (
         <div className="product-card">
             <button className="like-btn">
                 <img src="img/product-card/unliked.svg" alt="" />
             </button>
             <img height={112} width={133} src="img/product-card/nike-blazer.jpg" alt="" />
-            <h3>Sneakers for man <br /> Nike Blazer Mid Suede</h3>
+            <h3>{props.title}</h3>
             <div className="product-block">
                 <div className="product-info">
                     <span>Price:</span>
-                    <span>3 200 ₴</span>
+                    <span>{props.price} ₴</span>
                 </div>
                 <button className="add-to-cart">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

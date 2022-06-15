@@ -1,11 +1,18 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 
+const productCart = [
+    {title: 'Sneakers for man Nike Blazer Mid Suede', price: '3 000'}, 
+    {title: 'Sneakers for woman Nike Blazer Mid Suede', price: '3 000'},
+    {title: 'Sneakers for manwo Nike Blazer Mid Suede', price: '3 000'},
+];
+
+
 const Content = () => {
     return (
         <section className="content">
             <div className="content-header">
-                <h1>Вся коллекция рома хуй</h1>
+                <h1>All collections</h1>
                 <div className="search-block">
                     <input
                         type="text"
@@ -22,14 +29,7 @@ const Content = () => {
             </div>
 
             <div className="product-section">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+            {productCart.map((item) => <ProductCard title={item.title} price={item.price}/>)}
             </div>
         </section>
     );
