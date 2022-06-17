@@ -7,22 +7,24 @@ import Header from './components/Header';
 
 function App() {
   const [cartOpened, setCartOpened] = useState(false);
-  const [items, setItems] = useState([]); 
+  const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  
   useEffect(() => {
     fetch("https://62aba119bd0e5d29af1357a7.mockapi.io/items")
-    .then((res) => {
-      return res.json();
-    })
-    .then((json)=>{
-      setItems(json);
-    })
-  }, []) 
-  
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      })
+  }, [])
+
   return (
     <div className='wrapper'>
-      {cartOpened && <Cart onCloseCart={() => setCartOpened(false)}/>}
-      <Header onOpenCart={()=> setCartOpened(true)}/>
-      <Content products={items}/>
+      {cartOpened && <Cart setCartItems={setCartItems} items={cartItems} onCloseCart={() => setCartOpened(false)} />}
+      <Header onOpenCart={() => setCartOpened(true)} />
+      <Content setCartItems={setCartItems} cartItems={cartItems} products={items} />
     </div>
 
   );

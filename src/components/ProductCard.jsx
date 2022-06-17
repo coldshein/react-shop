@@ -3,27 +3,31 @@ import { useState } from 'react';
 import AddToCart from './AddToCartBtn';
 import InCartBtn from './InCartBtn';
 
-const ProductCard = (props) => {
+const ProductCard = ({title, image, price, onPlus, addToFavorite}) => {
     const [isAdded, setIsAdded] = useState(false);
 
     const addCart = () =>{
         setIsAdded(true);
-        alert('Added in your shopping cart!');
+        onPlus({title,image,price})
+        
+    }
+    const removeCart = () =>{
+        setIsAdded(false);
     }
     
     return (
         <div className="product-card">
-            <button className="like-btn" onClick={props.addToFavorite}>
+            <button className="like-btn" onClick={addToFavorite}>
                 <img src="img/product-card/unliked.svg" alt="" />
             </button>
-            <img height={112} width={133} src={props.image} alt="" />
-            <h3>{props.title}</h3>
+            <img height={112} width={133} src={image} alt="" />
+            <h3>{title}</h3>
             <div className="product-block">
                 <div className="product-info">
                     <span>Price:</span>
-                    <span>{props.price} ₴</span>
+                    <span>{price} ₴</span>
                 </div>
-                {isAdded ? <InCartBtn/> : <AddToCart addToCart={() => addCart()}/>}
+                {isAdded ? <InCartBtn removeFromCart={() => removeCart()}/> : <AddToCart addToCart={() => addCart()}/>}
             </div>
 
         </div>

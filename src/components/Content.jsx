@@ -4,7 +4,12 @@ import ProductCard from './ProductCard';
 const productCart = [];
 
 
-const Content = (props) => {
+const Content = ({products, setCartItems, cartItems}) => {
+
+    const onAddToCart = (obj) =>{
+        setCartItems(prev => [...prev, obj])
+    }
+
     return (
         <section className="content">
             <div className="content-header">
@@ -25,11 +30,12 @@ const Content = (props) => {
             </div>
 
             <div className="product-section">
-            {props.products.map((item) => <ProductCard 
+            {products.map((item) => <ProductCard 
             title={item.title} 
             price={item.price}
             image={item.imgUrl}
             addToFavorite={() => alert('Added to favorite!')}
+            onPlus={()=> onAddToCart(item)}
             />
             )}
             </div>
