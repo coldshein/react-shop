@@ -1,14 +1,10 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 
-const productCart = [
-    {title: 'Sneakers for man Nike Blazer Mid Suede', price: '3 000'}, 
-    {title: 'Sneakers for woman Nike Blazer Mid Suede', price: '3 000'},
-    {title: 'Sneakers for manwo Nike Blazer Mid Suede', price: '3 000'},
-];
+const productCart = [];
 
 
-const Content = () => {
+const Content = (props) => {
     return (
         <section className="content">
             <div className="content-header">
@@ -29,7 +25,13 @@ const Content = () => {
             </div>
 
             <div className="product-section">
-            {productCart.map((item) => <ProductCard title={item.title} price={item.price}/>)}
+            {props.products.map((item) => <ProductCard 
+            title={item.title} 
+            price={item.price}
+            image={item.imgUrl}
+            addToFavorite={() => alert('Added to favorite!')}
+            />
+            )}
             </div>
         </section>
     );

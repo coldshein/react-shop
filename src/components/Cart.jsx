@@ -1,11 +1,17 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-const Cart = () => {
+const Cart = (props) => {
     return (
-        <div style={{display: 'none'}} className='overlay'>
+        <div className='overlay' onClick={props.onCloseCart}>
             <div className='drawer'>
-                <h2 className='drawer-title'>Shopping cart</h2>
+                <div className='drawer-header'>
+                    <h2 className='drawer-title'>Shopping cart</h2>
+                    <button className="closeCart" onClick={props.onCloseCart}>
+                        <img height={20} width={20} src="img/product-card/remove-item.svg" alt="" />
+                    </button>
+                </div>
+
                 <div className='cart-list'>
                     <CartItem />
                     <CartItem />
