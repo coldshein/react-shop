@@ -1,13 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import CartItem from './CartItem';
+import Empty from './EmptyCart';
 
-const Cart = ({onCloseCart, items = [], setCartItems, cartItems}) => {
+const Cart = ({ onCloseCart, cartItems = [], onRemoveCart }) => {
 
-    const [totals, setTotals] = useState(0);
-    
     return (
-        <div className='overlay' onClick={onCloseCart}>
+        <div className='overlay'>
             <div className='drawer'>
                 <div className='drawer-header'>
                     <h2 className='drawer-title'>Shopping cart</h2>
@@ -16,17 +15,20 @@ const Cart = ({onCloseCart, items = [], setCartItems, cartItems}) => {
                     </button>
                 </div>
 
-                <div className='cart-list'>
-                    {
-                        items.map((obj) => <CartItem title={obj.title} price={obj.price} img={obj.imgUrl}/>)
-                    }
-                </div>
-                <div className='cart-info'>
+                {
+                    cartItems.length > 0 ? 
+                    <div className="cart-block">
+                        <div className='cart-list'>
+                        {
+                            cartItems.map((obj, index) => <CartItem title={obj.title} price={obj.price} img={obj.imgUrl} key={index} id={obj.id} onRemoveFromCart={onRemoveCart} />)
+                        }
+                    </div> 
+                    <div className='cart-info'>
                     <ul>
                         <li>
                             <span>Total:</span>
                             <div></div>
-                            <span className="total-price">0 ₴</span>
+                            <span className="total-price"> ₴</span>
                         </li>
                         <li>
                             <span>Taxes 5%:</span>
@@ -38,6 +40,12 @@ const Cart = ({onCloseCart, items = [], setCartItems, cartItems}) => {
                         Checkout
                     </button>
                 </div>
+                    </div>
+                    : <Empty onCloseCart={onCloseCart}/>
+                }
+
+
+                
             </div>
         </div>);
 }

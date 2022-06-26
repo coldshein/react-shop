@@ -3,31 +3,36 @@ import { useState } from 'react';
 import AddToCart from './AddToCartBtn';
 import InCartBtn from './InCartBtn';
 
-const ProductCard = ({title, image, price, onPlus, addToFavorite}) => {
+const ProductCard = ({ id, title, imgUrl, price, onPlus, onFavorite, favorited = false }) => {
     const [isAdded, setIsAdded] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(favorited);
 
-    const addCart = () =>{
+    const addCart = () => {
         setIsAdded(true);
-        onPlus({title,image,price})
-        
+        onPlus({ id,title, imgUrl, price })
+        alert('ok')
     }
-    const removeCart = () =>{
+    const addFavorite = () =>{
+        setIsFavorite(!isFavorite);
+        onFavorite({id,title,imgUrl,price});
+    }
+    const removeCart = () => {
         setIsAdded(false);
     }
-    
+
     return (
         <div className="product-card">
-            <button className="like-btn" onClick={addToFavorite}>
-                <img src="img/product-card/unliked.svg" alt="" />
+            <button className="like-btn" onClick={addFavorite}>
+                <img src={isFavorite ? '/img/save.svg' : '/img/saved.svg'} alt="s" />
             </button>
-            <img height={112} width={133} src={image} alt="" />
+            <img height={112} width={133} src={imgUrl} alt="" />
             <h3>{title}</h3>
             <div className="product-block">
                 <div className="product-info">
                     <span>Price:</span>
                     <span>{price} ₴</span>
                 </div>
-                {isAdded ? <InCartBtn removeFromCart={() => removeCart()}/> : <AddToCart addToCart={() => addCart()}/>}
+                {isAdded ? <InCartBtn addToCart={() => addCart()} /> : <AddToCart addCart={() => addCart()} />}
             </div>
 
         </div>
