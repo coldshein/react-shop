@@ -11,7 +11,7 @@ const Cart = ({ onCloseCart, cartItems = [], onRemoveCart }) => {
                 <div className='drawer-header'>
                     <h2 className='drawer-title'>Shopping cart</h2>
                     <button className="closeCart" onClick={onCloseCart}>
-                        <img height={20} width={20} src="img/product-card/remove-item.svg" alt="" />
+                        <img height={20} width={20} src="img/close.svg" alt="" />
                     </button>
                 </div>
 
@@ -20,7 +20,14 @@ const Cart = ({ onCloseCart, cartItems = [], onRemoveCart }) => {
                     <div className="cart-block">
                         <div className='cart-list'>
                         {
-                            cartItems.map((obj, index) => <CartItem title={obj.title} price={obj.price} img={obj.imgUrl} key={index} id={obj.id} onRemoveFromCart={onRemoveCart} />)
+                            cartItems.map((obj) => 
+                            <CartItem 
+                            title={obj.title} 
+                            price={obj.price} 
+                            img={obj.imgUrl} 
+                            id={obj.id} 
+                            onRemoveCart={onRemoveCart} 
+                            />)
                         }
                     </div> 
                     <div className='cart-info'>

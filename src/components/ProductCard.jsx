@@ -3,14 +3,14 @@ import { useState } from 'react';
 import AddToCart from './AddToCartBtn';
 import InCartBtn from './InCartBtn';
 
-const ProductCard = ({ id, title, imgUrl, price, onPlus, onFavorite, favorited = false }) => {
+const ProductCard = ({id, title, imgUrl, price, onPlus, onFavorite, favorited = false}) => {
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(favorited);
 
     const addCart = () => {
-        setIsAdded(true);
-        onPlus({ id,title, imgUrl, price })
-        alert('ok')
+        onPlus({id,title,imgUrl,price});
+        setIsAdded(!isAdded);
+        
     }
     const addFavorite = () =>{
         setIsFavorite(!isFavorite);
@@ -32,7 +32,7 @@ const ProductCard = ({ id, title, imgUrl, price, onPlus, onFavorite, favorited =
                     <span>Price:</span>
                     <span>{price} ₴</span>
                 </div>
-                {isAdded ? <InCartBtn addToCart={() => addCart()} /> : <AddToCart addCart={() => addCart()} />}
+                {isAdded ? <InCartBtn addCart={() => addCart()} /> : <AddToCart addCart={() => addCart()} />}
             </div>
 
         </div>

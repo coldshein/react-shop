@@ -7,7 +7,8 @@ const Main = (
         onChangeSearchValue,
         setSearchValue,
         onAddToCart,
-        onAddToFavorite
+        onAddToFavorite,
+        setItems,
     }) => {
     const productCart = [];
     return (
