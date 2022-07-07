@@ -9,6 +9,7 @@ const Main = (
         onAddToCart,
         onAddToFavorite,
         setItems,
+        cartItems,
     }) => {
     const productCart = [];
     return (
@@ -41,6 +42,7 @@ const Main = (
                         {... item}
                         onFavorite={(obj) => onAddToFavorite(obj)}
                         onPlus={(obj) => onAddToCart(obj)}
+                        added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
                     />
                     )}
             </div>

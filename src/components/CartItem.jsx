@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CartItem = ({img, title, price, onRemoveCart, id}) => {
+const CartItem = ({img, title, price, onRemoveItem, id}) => {
   return (
     <div className='cart-item'>
       <img height={70} width={70} src={img} alt="" />
@@ -8,7 +8,7 @@ const CartItem = ({img, title, price, onRemoveCart, id}) => {
         <p>{title}</p>
         <span>{price} ₴</span>
       </div>
-      <button className='remove-item' onClick={() => onRemoveCart({id})}>
+      <button className='remove-item' onClick={() => onRemoveItem({id})}>
         <img height={11} width={11} src="img/product-card/remove-item.svg" alt="" />
       </button>
     </div>

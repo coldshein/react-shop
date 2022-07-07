@@ -11,10 +11,15 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
-  const onRemoveFromCart = (id) => {
-    setCartItems(prev => prev.filter((item) => item.id !== id))
-    axios.delete(`https://62aba119bd0e5d29af1357a7.mockapi.io/cart/${id}`);
-  }
+  const onRemoveItem = (id) => {
+    try {
+      axios.delete(`https://62aba119bd0e5d29af1357a7.mockapi.io/cart${id}`);
+      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
+    } catch (error) {
+      alert('Ошибка при удалении из корзины');
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -37,7 +42,7 @@ function App() {
           setCartItems={setCartItems}
           cartItems={cartItems}
           onCloseCart={() => setCartOpened(false)}
-          onRemoveCart={onRemoveFromCart} />
+          onRemoveItem={onRemoveItem} />
       }
       <Header
         onOpenCart={() => setCartOpened(true)}

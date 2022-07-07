@@ -1,0 +1,53 @@
+[33mcommit 62386fc1b4e8127b31a493a9f51f19eafc51babe[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Fri Jul 1 23:28:35 2022 +0300
+
+    0107
+
+[33mcommit e8aa946d95e8e4b4687fcc9b1738e1d835975a3b[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Mon Jun 27 00:27:37 2022 +0300
+
+    update: gh pages deploying
+
+[33mcommit f6ee659e1dfdb58437b1d8722f791fdfbf1e3e8f[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Mon Jun 27 00:17:04 2022 +0300
+
+    second version: added cart and favorite
+
+[33mcommit 12f29db21677c3fc148cb4c9f3e88baec637067a[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Sat Jun 18 02:05:45 2022 +0300
+
+    updated adding to cart
+
+[33mcommit 0e454f0bf86bd4cb2a226bf4329291976c79b2b9[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Fri Jun 17 14:49:52 2022 +0300
+
+    useState hook
+
+[33mcommit 72342721d0218aec75ee1aa2df2b638f224352a4[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Thu Jun 16 00:35:34 2022 +0300
+
+    updated props component
+
+[33mcommit 8237febb3773e0d97821b6a5e049f8676724ff57[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Wed Jun 15 22:46:31 2022 +0300
+
+    created cart
+
+[33mcommit 98c9a5a2dbf0ca151e8a865a9e002c7f81066015[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Mon Jun 13 23:03:25 2022 +0300
+
+    init
+
+[33mcommit 3ad84fadf16519d83d765e2ffd0ecb73d77f53c1[m
+Author: coldshein <coldshein@gmail.com>
+Date:   Sun Jun 5 13:19:45 2022 +0300
+
+    Initialize project using Create React App

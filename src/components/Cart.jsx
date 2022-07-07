@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CartItem from './CartItem';
 import Empty from './EmptyCart';
 
-const Cart = ({ onCloseCart, cartItems = [], onRemoveCart }) => {
+const Cart = ({ onCloseCart, cartItems = [], onRemoveItem }) => {
 
     return (
         <div className='overlay'>
@@ -26,7 +26,7 @@ const Cart = ({ onCloseCart, cartItems = [], onRemoveCart }) => {
                             price={obj.price} 
                             img={obj.imgUrl} 
                             id={obj.id} 
-                            onRemoveCart={onRemoveCart} 
+                            onRemoveItem={onRemoveItem} 
                             />)
                         }
                     </div> 

@@ -17,20 +17,38 @@ const Content = (
         favorites
     }) => {
 
-    const onAddToCart = (obj) => {
-        console.log(obj)
-        if (cartItems.find(item => item.id == obj.id)) {
-            setCartItems(prev => prev.filter(item => item.id !== obj.id))
-        } else {
-            axios.post('https://62aba119bd0e5d29af1357a7.mockapi.io/cart', obj);
-            setCartItems(prev => [...prev, obj]);
+    const onAddToCart = async (obj) => {
+        try {
+            console.log(obj)
+            const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
+            if (findItem) {
+                setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
+                await axios.delete(`https://62aba119bd0e5d29af1357a7.mockapi.io/cart${findItem.id}`);
+            } else {
+                setCartItems((prev) => [...prev, obj]);
+                const { data } = await axios.post('https://62aba119bd0e5d29af1357a7.mockapi.io/cart', obj);
+                setCartItems((prev) =>
+                    prev.map((item) => {
+                        if (item.parentId === data.parentId) {
+                            return {
+                                ...item,
+                                id: data.id,
+                            };
+                        }
+                        return item;
+                    }),
+                );
+            }
+        } catch (error) {
+            alert('Ошибка при добавлении в корзину');
+            console.error(error);
         }
-    }
+    };
 
-    
+
     const onAddToFavorite = async (obj) => {
         try {
-            if (favorites.find(favObj => favObj.id == obj.id)) {
+            if (favorites.find(favObj => favObj.id === obj.id)) {
                 axios.delete(`https://62aba119bd0e5d29af1357a7.mockapi.io/favorites/${obj.id}`)
 
             } else {
@@ -59,6 +77,7 @@ const Content = (
                     setFavorites={setFavorites}
                     products={products}
                     setItems={setItems}
+                    cartItems={cartItems}
                 />} />
             <Route path="/favorites" exact element={
                 <Favorites
